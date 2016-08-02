@@ -18,16 +18,16 @@ public class When_unsubscribing : RavenDBPersistenceTestBase
         await storage.Subscribe(TestClients.ClientA, MessageTypes.MessageB, context);
 
         var clients = await storage.GetSubscriberAddressesForMessage(new[] { MessageTypes.MessageA, MessageTypes.MessageB }, context);
-        Assert.That(clients.Count(), Is.EqualTo(1));
+        Assert.AreEqual(1, clients.Count());
 
         await storage.Unsubscribe(TestClients.ClientA, MessageTypes.MessageA, context);
 
         clients = await storage.GetSubscriberAddressesForMessage(new []{ MessageTypes.MessageA, MessageTypes.MessageB }, context);
-        Assert.That(clients.Count(), Is.EqualTo(1));
+        Assert.AreEqual(1, clients.Count());
 
         await storage.Unsubscribe(TestClients.ClientA, MessageTypes.MessageB, context);
 
         clients = await storage.GetSubscriberAddressesForMessage(new[] { MessageTypes.MessageA, MessageTypes.MessageB }, context);
-        Assert.That(clients, Is.Empty);
+        Assert.IsEmpty(clients);
     }
 }
