@@ -170,8 +170,9 @@
     <Compile Include="SubscriptionStorage\When_converting_old_subscription_to_new_subscription.cs" />
     <Compile Include="SubscriptionStorage\When_listing_subscribers_for_a_non_existing_message_type.cs" />
     <Compile Include="SubscriptionStorage\When_listing_subscribers_for_message_types.cs" />
-    <Compile Include="SubscriptionStorage\When_receiving_an_unsubscription_message.cs" />
-    <Compile Include="SubscriptionStorage\When_receiving_a_subscription_message.cs" />
+    <Compile Include="SubscriptionStorage\When_subscribing_with_null_endpoint_name.cs" />
+    <Compile Include="SubscriptionStorage\When_unsubscribing.cs" />
+    <Compile Include="SubscriptionStorage\When_subscribing.cs" />
     <Compile Include="SubscriptionStorage\When_receiving_duplicate_subscription_messages.cs" />
     <Compile Include="Timeouts\FakeLegacyTimoutDataClrTypeConversionListener.cs" />
     <Compile Include="Timeouts\LegacyTimeoutData.cs" />

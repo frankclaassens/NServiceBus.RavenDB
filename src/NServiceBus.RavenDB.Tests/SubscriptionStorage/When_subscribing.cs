@@ -9,10 +9,10 @@ using NUnit.Framework;
 using Raven.Client;
 
 [TestFixture]
-public class When_receiving_a_subscription_message : RavenDBPersistenceTestBase
+public class When_subscribing : RavenDBPersistenceTestBase
 {
     [Test]
-    public async Task A_subscription_entry_should_be_added_to_the_database()
+    public async Task subscription_is_persisted()
     {
         var clientEndpoint = new Subscriber("TestEndpoint", "TestEndpoint");
 
