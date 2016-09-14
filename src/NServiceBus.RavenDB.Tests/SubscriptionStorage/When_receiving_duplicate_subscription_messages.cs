@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Threading.Tasks;
 using NServiceBus.Extensibility;
 using NServiceBus.Persistence.RavenDB;
@@ -29,5 +30,25 @@ public class When_receiving_duplicate_subscription_messages : RavenDBPersistence
 
             Assert.AreEqual(1, subscriptions);
         }
+    }
+
+    [Test]
+    public async Task should_overwrite_existing_subscription()
+    {
+        const string subscriberAddress = "testEndPoint@localhost";
+        var messageType = new MessageType("SomeMessageType", "1.0.0.0");
+
+        var storage = new SubscriptionPersister(store);
+        await storage.Subscribe(new Subscriber(subscriberAddress, "old"), messageType, new ContextBag());
+        await storage.Subscribe(new Subscriber(subscriberAddress, "new"), messageType, new ContextBag());
+
+        var subscriber = (await storage.GetSubscriberAddressesForMessage(new[]
+        {
+            messageType
+        }, new ContextBag())).ToArray();
+
+        Assert.AreEqual(1, subscriber.Length);
+        Assert.AreEqual(subscriberAddress, subscriber[0].TransportAddress);
+        Assert.AreEqual("new", subscriber[0].Endpoint);
     }
 }
