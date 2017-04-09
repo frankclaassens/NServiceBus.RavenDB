@@ -40,7 +40,7 @@
         {
             var connectionParams = new ConnectionParameters
             {
-                Url = "http://localhost:8083",
+                Url = "http://rdb-dev.umusic.com:80",
                 DatabaseName = "TestConnectionParams"
             };
 
@@ -49,8 +49,8 @@
 
             var storeInitializer = DocumentStoreManager.GetUninitializedDocumentStore<StorageType.Sagas>(settings);
 
-            Assert.AreEqual("http://localhost:8083", storeInitializer.Url);
-            Assert.AreEqual("http://localhost:8083 (DB: TestConnectionParams)", storeInitializer.Identifier);
+            Assert.AreEqual("http://rdb-dev.umusic.com:80", storeInitializer.Url);
+            Assert.AreEqual("http://rdb-dev.umusic.com:80 (DB: TestConnectionParams)", storeInitializer.Identifier);
         }
 
         [Test]

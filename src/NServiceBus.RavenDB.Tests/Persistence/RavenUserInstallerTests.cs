@@ -21,7 +21,7 @@ public class RavenUserInstallerTests
     {
         using (var documentStore = new DocumentStore
             {
-                Url = "http://localhost:8083",
+                Url = "http://rdb-dev.umusic.com:80",
                 DefaultDatabase = "Test"
             })
         {
